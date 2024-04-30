@@ -6,4 +6,5 @@ grftools.egg-info
 build/*
 dist/*
 
-.*
+.gitignore
+.ipynb_checkpoints
