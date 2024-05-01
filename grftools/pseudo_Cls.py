@@ -1,6 +1,23 @@
 import jax.numpy as jnp
 
 def create_Gaussian_field(PRNGKey1, PRNGKey2, Cl, shape, box_size, mean=0.0):
+    """Creates a random Gaussian fied.
+
+    Required arguments:
+    Cl              Callable f(ell) returning the power spectrum for multipole
+                    ell.
+    shape           Tuple (N, M) of the requested output size.
+    box_size        Tuple (L1, L2) of the physical dimension of the created
+                    field. The units have to be consistent with those returned
+                    by Cl.
+
+    Optional arguments:
+    mean            Mean of the created field. Default is 0.
+
+    Returns:
+    Array m with m.shape == shape.
+    """
+
     ell_x_min_box = 2.0 * jnp.pi / box_size[0]
     ell_y_min_box = 2.0 * jnp.pi / box_size[1]
     ell_x = jnp.fft.fftfreq(shape[0], d=1.0 / shape[0]) * ell_x_min_box
