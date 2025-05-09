@@ -1,4 +1,5 @@
 import jax.numpy as jnp
+from jax import random
 
 def create_Gaussian_field(PRNGKey1, PRNGKey2, Cl, shape, box_size, mean=0.0):
     """Creates a random Gaussian fied.
